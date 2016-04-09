@@ -1,4 +1,4 @@
-l# JavaScript Algorithm Challenges
+# JavaScript Algorithm Challenges
 
 This is the repo where I will keep my solutions to the JavaScript algorithm challenges posted on [FreeCodeCamp](www.freecodecamp.com). 
 
