@@ -15,13 +15,31 @@ Object.keys()
 */
 
 function whereAreYou(collection, source) {
-  // What's in a name?
-  var arr = [];
-  // Only change code below this line
+	// What's in a name?
+	var arr = [];
   
+	// Only change code below this line
+	// loop through the source object's key-value pairs one by one
+	var source_keys = Object.keys(source);
   
-  // Only change code above this line
-  return arr;
+	for (i = 0; i<source_keys.length; i++) {
+        var current_property = source_keys[i];
+        var current_value = source[current_property];
+        
+      	for (j = 0; j<collection.length; j++) {
+			var current_object = collection[j];
+			
+			if (current_object.hasOwnProperty(current_property)) {
+				if (current_value===current_object[current_property]) {
+					arr.push(current_object);
+				}
+			}
+			
+		}
+	}
+  
+	// Only change code above this line
+	return arr;
 }
 
 
