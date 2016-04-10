@@ -20,10 +20,16 @@ Array.join()
 */
 
 function myReplace(str, before, after) {
-  return str;
+	// check that the first letter is uppercase or not 
+	var first_letter = before[0];
+	if (first_letter === first_letter.toUpperCase()) {
+		after = after[0].toUpperCase() + after.slice(1);
+	}
+	
+	str = str.replace(before, after);
+	
+	return str;
 }
-
-myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
 
 
 /* --- Debug ---
