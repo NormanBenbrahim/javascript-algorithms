@@ -18,10 +18,33 @@ String.split()
 */
 
 function translatePigLatin(str) {
-  return str;
-}
+	var vowels = 'aeiouy'
+	var index = [];
 
-translatePigLatin("consonant");
+	//loop through each letter in the str
+	for (i=0; i<str.length; i++) {
+		for (j = 0; j<vowels.length; j++) {
+  			if (str[i]===vowels[j]) {
+  				// then this index (i) will be where you 'split' the word
+  				// just record all the indices where it's a vowel
+  				index.push(i);
+  			}
+  			
+		}
+		
+	}
+	
+	// the first appearance of a vowel
+	var ind = index[0];
+	
+	if (ind===0) {
+		return str + "way"
+	} 
+	else {
+		return str.slice(ind) + str.slice(0, ind) + 'ay'
+	}
+	
+}
 
 
 /* --- Debug --- 
