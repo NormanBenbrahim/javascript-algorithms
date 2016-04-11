@@ -19,9 +19,33 @@ String.split()
 */
 
 function pairElement(str) {
-  return str;
+	var result = [];
+	// a <-> t
+	// g <-> c
+	for (letter = 0; letter<str.length; letter++) {
+		var toStore = [];
+		toStore.push(str[letter]);
+		
+		switch(str[letter]) {
+			case 'A':
+				toStore.push('T');
+				break;
+			case 'T':
+				toStore.push('A');
+				break;
+			case 'G':
+				toStore.push('C');
+				break;
+			case 'C':
+				toStore.push('G');
+				break;
+		}
+		
+		result.push(toStore);
+	}
+	
+	return result;
 }
-
 
 /*--- Debug ---
 
