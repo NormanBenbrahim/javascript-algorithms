@@ -14,10 +14,28 @@ Remainder
 */
 
 function sumFibs(num) {
-  return num;
+	var fib = [];
+	
+	// initialize the first 2 fibonacci numbers
+	fib[0] = 0;
+	fib[1] = 1;
+	var count = fib[1]; // start the 'odd-counter' at the first odd number
+	
+	for (i = 2; i<=num; i++) {
+		fib[i] = fib[i-2] + fib[i-1];
+		
+		if (fib[i]>num) {
+			break;
+		}
+		else if (fib[i]%2!==0) {
+			count += fib[i];
+		}
+	}
+	return count;
+	
 }
 
-/*
+/* --- Debug ---
 
 sumFibs(1) should return a number.
 sumFibs(1000) should return 1785.
