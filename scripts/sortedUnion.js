@@ -16,11 +16,19 @@ Arguments object
 Array.reduce()
 */
 
-function uniteUnique(arr1, arr2, arr3) {
-  return arr1;
+function uniteUnique() {
+	// most languages have a 'unique' function, and js just got one after ES6
+	var c = [];
+	
+	
+	for (i = 0; i<arguments.length; i++) {
+		c = c.concat(arguments[i]);
+	}
+	
+	return [...new Set(c)];
 }
 
-/*
+/* --- Debug ----
 
 uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]) should return [1, 3, 2, 5, 4].
 uniteUnique([1, 3, 2], [1, [5]], [2, [4]]) should return [1, 3, 2, [5], [4]].
