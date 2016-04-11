@@ -25,7 +25,7 @@ function uniteUnique() {
 		c = c.concat(arguments[i]);
 	}
 	
-	return [...new Set(c)];
+	return Array.from(new Set(c));
 }
 
 /* --- Debug ----
