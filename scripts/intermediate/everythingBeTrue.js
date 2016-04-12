@@ -8,8 +8,22 @@ Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write you
 */
 
 function truthCheck(collection, pre) {
-	// Is everyone being true?
-	return pre;
+	var condition = true; // default to true, and changes to false if condition is not met
+	for (var i = 0; i<collection.length; i++) {
+		obj_i = collection[i];
+		if (obj_i.hasOwnProperty(pre)) {
+			if (obj_i[pre]==="" || obj_i[pre]===0 || obj_i[pre]===null || obj_i[pre]===undefined || (isNaN(obj_i[pre]) && (typeof obj_i[pre]==='number'))) {
+				condition = false;
+			}
+			else {
+				continue;
+			}
+		}
+		else {
+			condition = false;
+		}
+	}
+	return condition;
 }
 
 /* --- Debug ---
