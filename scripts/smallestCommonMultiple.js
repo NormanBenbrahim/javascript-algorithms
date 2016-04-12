@@ -95,7 +95,6 @@ function smallestCommons(arr) {
 	
 	return mult;
 }
-smallestCommons([1, 13]);
 
 /* --- Debug ---
 
