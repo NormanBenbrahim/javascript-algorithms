@@ -11,8 +11,8 @@ Array.filter()
 */
 
 function findElement(arr, func) {
-  var num = 0;
-  return num;
+	arr = arr.filter(func);
+	return arr[0];
 }
 
 /* --- Debug ---
