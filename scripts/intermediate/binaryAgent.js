@@ -13,7 +13,15 @@ String.fromCharCode()
 */
 
 function binaryAgent(str) {
-	return str;
+	sentence_array = [];
+	// split the string by spaces
+	str = str.split(" ");
+	for (i = 0; i<str.length; i++) {
+		var code = parseInt(str[i], 2);
+		var letter = String.fromCharCode(code);
+		sentence_array.push(letter);
+	}
+	return sentence_array.join('');
 }
 
 /*
