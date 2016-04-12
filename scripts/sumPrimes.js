@@ -14,9 +14,21 @@ For Loops
 Array.push()
 */
 
-function sumPrimes(number) {
-	return number;
+function sumPrimes(numb) {
+    var sieve = [], i, j;
+    var primes = 0;
+    for (i = 2; i <= numb; ++i) {
+        if (!sieve[i]) {
+            // i has not been marked -- it is prime
+            primes += i;
+            for (j = i << 1; j <= numb; j += i) {
+                sieve[j] = true;
+            }
+        }
+    }
+    return primes;
 }
+
 
 /* --- Debug ---
 
