@@ -16,7 +16,16 @@ Array.slice()
 */
 
 function dropElements(arr, func) {
-	// Drop them elements.
+	var booleans = arr.map(func);
+	
+	for (i = 0; i<booleans.length; i++ ) {
+		if (booleans[i]===false) {
+			arr.shift();
+		}
+		else {
+			break;
+		}
+	}
 	return arr;
 }
 
