@@ -45,22 +45,15 @@ function sym() {
 		var tmp_arr2 = arguments[i];
 		tmp_arr2 = tmp_arr2.filter(filterFuncOriginal);
 		new_arr.push(tmp_arr2);
-		console.log('\n iteration ' + i);
-		console.log('pushing new element:');
-		console.log(new_arr);
+
 		
 		// first make sure that new_arr remains one dimensional
-		console.log('flattening:');
 		new_arr = new_arr.reduce(flatten);
-		console.log(new_arr);
 		
 		// sort the new array
-		console.log('sorting');
 		new_arr = new_arr.sort();
-		console.log(new_arr);
 		
 		// now remove duplicates with the filter function
-		console.log('filtering: ');
 		/* This works but makes use of a loop
    		for (var k = 1; k <j.length+1; k++) { 
 			if (j[k]!==j[k-1] && j[k]!==j[k+1]) {console.log(j[i])} 
@@ -69,7 +62,6 @@ function sym() {
 		// this is better
 		new_arr = [new_arr.filter(filterFunc)];
 		
-		console.log(new_arr);
 	}
 	
 	// unique values only remain, access the first element to get it
