@@ -12,8 +12,69 @@ Array.reduce()
 Symmetric Difference
 */
 
-function sym(args) {
-	return args;
+function sym() {
+	// initialize with the first argument as an array so that 
+	// the flattening will work
+	// first remove duplicates from the individual arrays
+	var tmp_arr = arguments[0];
+	tmp_arr = tmp_arr.filter(filterFuncOriginal);
+	var new_arr = [tmp_arr];
+	
+	// a function for flattening a multidimensional array
+	function flatten(a, b) {
+		return a.concat(b);
+	}
+	
+	// a function for filtering duplicates from a mixed array
+	// while removing the original duplicated item
+	function filterFunc(item, index, self) {
+		if (self[index]!==self[index-1] && self[index]!==self[index+1]) {
+			return self[index];
+		}	
+	}
+	
+	// similar to above, except it keeps the original duplicated item
+	function filterFuncOriginal(item, index, self) {
+    	return self.indexOf(item) == index;
+	}
+	
+	// loop through and "re-initialize" new_arr. this is because
+	// the symmetric difference is associative
+	for (var i = 1; i<arguments.length; i++) {
+		//first remove duplicates from the array argument
+		var tmp_arr2 = arguments[i];
+		tmp_arr2 = tmp_arr2.filter(filterFuncOriginal);
+		new_arr.push(tmp_arr2);
+		console.log('\n iteration ' + i);
+		console.log('pushing new element:');
+		console.log(new_arr);
+		
+		// first make sure that new_arr remains one dimensional
+		console.log('flattening:');
+		new_arr = new_arr.reduce(flatten);
+		console.log(new_arr);
+		
+		// sort the new array
+		console.log('sorting');
+		new_arr = new_arr.sort();
+		console.log(new_arr);
+		
+		// now remove duplicates with the filter function
+		console.log('filtering: ');
+		/* This works but makes use of a loop
+   		for (var k = 1; k <j.length+1; k++) { 
+			if (j[k]!==j[k-1] && j[k]!==j[k+1]) {console.log(j[i])} 
+		}*/
+		
+		// this is better
+		new_arr = [new_arr.filter(filterFunc)];
+		
+		console.log(new_arr);
+	}
+	
+	// unique values only remain, access the first element to get it
+	// as a one dimensional array
+	return new_arr[0];
 }
 
 /* --- Debug ---
