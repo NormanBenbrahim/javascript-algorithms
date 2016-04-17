@@ -11,8 +11,53 @@ Here are some helpful links:
 Global Array Object
 */
 
-function updateInventory (arr1, arr2) {
-	return arr1;
+function updateInventory () {
+	// first let's turn these arrays into objects
+	var arr = {};
+	
+	// note the initial value provided at the end is the object to be populated!
+	arguments[0].reduce(function(prevValue, currValue) {
+		arr[currValue[1]] = currValue[0];
+	}, arr);
+	
+	// now loop through the pairs in arr2, and if the property exists, add the value.
+	// otherwise add the property/value pair itself
+	arguments[1].reduce(function(prevValue, currValue) {
+		if (arr.hasOwnProperty(currValue[1])) {
+			arr[currValue[1]] += currValue[0];
+		}
+		else {
+			arr[currValue[1]] = currValue[0];
+		}
+	}, arr);
+	
+	// get the keys and values as arrays to sort
+	var keys = [], values = [];
+	for (var key in arr) {
+		keys.push(key);
+		values.push(arr[key]);
+	}
+
+	// create the sorting function 
+	function sortIndex(a, b) { 
+		return keys[a] < keys[b] ? -1 : keys[a] > keys[b] ? 1 : 0;
+	}
+	
+	// do the sorting
+	var indices = new Array(keys.length); //initialize an index object
+	for (var i = 0; i<keys.length; i++) {
+		indices[i] = i;
+		indices.sort(sortIndex);
+	}
+	
+	// now for each index in indices we return an array sorted alphabetically
+	var returnArray = [];
+	
+	indices.reduce(function(prevValue, currValue, index, self) {
+		returnArray.push([values[currValue], keys[currValue]]);
+	}, returnArray);
+	
+	return returnArray;
 }
 
 /* --- Debug ---
