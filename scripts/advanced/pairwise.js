@@ -24,7 +24,21 @@ Array.reduce()
 */
 
 function pairwise(arr, arg) {
-	return arg;
+	var count = 0;
+	
+	// reduce is the same idea but less structured
+	for (var i = 0; i<arr.length; i++) {
+		for (var j = i+1; j<arr.length; j++) {
+			if (arr[i]+arr[j]===arg /*&& arr[j] + arr[i-1]!==arg*/) {
+				count += i + j;
+				// Set the indices to NaN so that they can't be used in next iteration
+				// got this idea from the FCC wiki!
+     			arr[i] = arr[j] = NaN;
+			}
+		}
+	}
+	
+	return count;
 }
 
 /* --- Debug ---
